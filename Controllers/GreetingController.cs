@@ -8,6 +8,6 @@ public class GreetingController : ControllerBase
     [HttpGet]
     public string Hello()
     {
-        return "Hello World";
+        return "Check Auto Deployment!";
     }
 }
