@@ -8,7 +8,7 @@ builder.Services.AddDbContext<DatabaseContext>(options => options.UseNpgsql(buil
 
 var app = builder.Build();
 
-app.UseCors(x => x.AllowAnyMethod().AllowAnyHeader().SetIsOriginAllowed(origin => true).AllowCredentials());
+app.UseCors(x => x.AllowAnyMethod().AllowAnyHeader().SetIsOriginAllowed(origin => true).AllowCredentials().WithOrigins("https://localhost:3000", "http://localhost:3000"));
 
 app.UseHttpsRedirection();
 
