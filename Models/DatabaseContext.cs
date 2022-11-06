@@ -8,9 +8,12 @@ public class DatabaseContext : DbContext
 
     }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder){
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
         modelBuilder.UseSerialColumns();
+        modelBuilder.Entity<Student>().HasMany<Course>(s => s.Courses).WithMany(c => c.Students);
     }
 
     public DbSet<Student> Students { get; set; }
+    public DbSet<Course> Courses { get; set; }
 }
