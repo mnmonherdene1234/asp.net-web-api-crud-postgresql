@@ -11,5 +11,5 @@ public class Student
     public string Name { get; set; }
     [Required]
     public int Age { get; set; }
-    public ICollection<Course> Courses { get; set; }
+    public Course Course { get; set; }
 }
