@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using WebAPITest.Models;
-using System.Collections.Generic;
 
 namespace WebAPITest.Controllers;
 
@@ -16,7 +15,7 @@ public class StudentController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<object> CreateStudent(Student student)
+    public async Task<ActionResult<Student>> CreateStudent(Student student)
     {
         if (student == null)
             return BadRequest();
@@ -34,7 +33,7 @@ public class StudentController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<object> GetStudent(int id)
+    public async Task<ActionResult<Student>> GetStudent(int id)
     {
         Student student = await _context.Students.FindAsync(id);
         if (student == null) return NotFound();
@@ -42,7 +41,7 @@ public class StudentController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<object> UpdateStudent(int id, Student student)
+    public async Task<ActionResult<Student>> UpdateStudent(int id, Student student)
     {
         Student found = await _context.Students.FindAsync(id);
         if (found == null) return NotFound();
@@ -53,7 +52,7 @@ public class StudentController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public async Task<object> DeleteStudent(int id)
+    public async Task<ActionResult<Student>> DeleteStudent(int id)
     {
         Student student = await _context.Students.FindAsync(id);
         if (student == null) return NotFound();
